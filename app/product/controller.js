@@ -160,7 +160,6 @@ async function update(req, res, next) {
           product = await Product.findOneAndUpdate({ _id: req.params.id }, { ...payload, image_url: filename }, { new: true, runValidators: true });
           return res.json(product);
         } catch (err) {
-          // ----- cek tipe error ---- //
           if (err && err.name === "ValidationError") {
             return res.json({
               error: 1,
@@ -175,12 +174,10 @@ async function update(req, res, next) {
         next(err);
       });
     } else {
-      // (6) update produk jika tidak ada file upload
       let product = await Product.findOneAndUpdate({ _id: req.params.id }, payload, { new: true, runValidators: true });
       return res.json(product);
     }
   } catch (err) {
-    // ----- cek tipe error ---- //
     if (err && err.name === "ValidationError") {
       return res.json({
         error: 1,
