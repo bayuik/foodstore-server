@@ -1,6 +1,5 @@
 const { getToken } = require("../utils/get-token");
 const jwt = require("jsonwebtoken");
-const { config } = require("dotenv");
 const config = require("../config");
 const User = require("../user/model");
 const { json } = require("express");
