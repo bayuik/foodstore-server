@@ -2,7 +2,7 @@ const User = require("../user/model");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const config = require('../config')
+const config = require("../config");
 
 async function register(req, res, next) {
   try {
@@ -50,8 +50,19 @@ async function login(req, res, next) {
   })(req, res, next);
 }
 
+function me(req, res, next) {
+  if (!req.user) {
+    return res.json({
+      error: 1,
+      message: `You are not login or token expired`,
+    });
+  }
+  return res.json(req.user);
+}
+
 module.exports = {
   register,
   localStrategy,
   login,
+  me,
 };
