@@ -17,7 +17,7 @@ async function store(req, res, next) {
     await tag.save();
     return res.json(tag);
   } catch (err) {
-    if (err && err.name === "validationError") {
+    if (err && err.name == "ValidationError") {
       return res.json({
         error: 1,
         message: err.message,
@@ -43,7 +43,7 @@ async function update(req, res, next) {
 
     return res.json(tag);
   } catch (err) {
-    if (err && err.name === "ValidationError") {
+    if (err && err.name == "ValidationError") {
       return res.json({
         error: 1,
         message: err.message,

@@ -40,7 +40,7 @@ async function update(req, res, next) {
     );
     return res.json({ cartItems });
   } catch (err) {
-    if (!err && err.name === "ValidationError") {
+    if (!err && err.name == "ValidationError") {
       return res.json({
         error: 1,
         message: err.message,

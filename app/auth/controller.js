@@ -12,7 +12,7 @@ async function register(req, res, next) {
     await user.save();
     return res.json(user);
   } catch (err) {
-    if (err && err.name === "ValidationError") {
+    if (err && err.name == "ValidationError") {
       return res.json({
         error: 1,
         message: err.message,

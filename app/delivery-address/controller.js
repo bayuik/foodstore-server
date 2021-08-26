@@ -18,7 +18,7 @@ async function store(req, res, next) {
     await address.save();
     return res.json(address);
   } catch (err) {
-    if (err && err.name === "ValidationError") {
+    if (err && err.name == "ValidationError") {
       return res.json({
         error: 1,
         message: err.message,
@@ -45,7 +45,7 @@ async function update(req, res, next) {
     address = await DeliveryAddress.findOneAndUpdate({ _id: id }, payload, { new: true });
     return res.json(address);
   } catch (err) {
-    if (err && err.name === "ValidationError") {
+    if (err && err.name == "ValidationError") {
       return res.json({
         error: 1,
         message: err.message,
@@ -72,7 +72,7 @@ async function destroy(req, res, next) {
     await DeliveryAddress.findOneAndDelete({ _id: id });
     return res.json(address);
   } catch (err) {
-    if (err && err.name === "ValidationError") {
+    if (err && err.name == "ValidationError") {
       return res.json({
         error: 1,
         message: err.message,

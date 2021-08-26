@@ -49,7 +49,7 @@ async function store(req, res, next) {
           return res.json(product);
         } catch (err) {
           fs.unlinkSync(target_path);
-          if (err && err.name === "ValidationError") {
+          if (err && err.name == "ValidationError") {
             return res.json({
               error: 1,
               message: err.message,
@@ -68,7 +68,7 @@ async function store(req, res, next) {
       return res.json(product);
     }
   } catch (err) {
-    if (err && err.name === "ValidationError") {
+    if (err && err.name == "ValidationError") {
       return res.json({
         error: 1,
         message: err.message,
@@ -160,7 +160,7 @@ async function update(req, res, next) {
           product = await Product.findOneAndUpdate({ _id: req.params.id }, { ...payload, image_url: filename }, { new: true, runValidators: true });
           return res.json(product);
         } catch (err) {
-          if (err && err.name === "ValidationError") {
+          if (err && err.name == "ValidationError") {
             return res.json({
               error: 1,
               message: err.message,
@@ -178,7 +178,7 @@ async function update(req, res, next) {
       return res.json(product);
     }
   } catch (err) {
-    if (err && err.name === "ValidationError") {
+    if (err && err.name == "ValidationError") {
       return res.json({
         error: 1,
         message: err.message,
